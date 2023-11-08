@@ -1,0 +1,12 @@
+<ul>
+{{#if products.length}}
+    {{#each products}}
+        <li> {{description}} </li>
+        <li>precio: {{price}} </li>
+        <li>stock: {{stock}} </li>
+        <br>
+    {{/each}}
+{{else}}
+    <p>No hay productos todavía.</p>
+{{/if}}
+</ul>
