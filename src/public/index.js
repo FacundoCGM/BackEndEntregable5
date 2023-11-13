@@ -4,13 +4,15 @@ const form = document.getElementById('form')
 
 const products = document.getElementById('products')
 
-form.onsubmit = (e) => {
-    const title = document.getElementById(title).value
-    const description = document.getElementById(description).value
-    const price = document.getElementById(price).value
-    const thumbnails = document.getElementById(thumbnails).value
-    const code = document.getElementById(code).value
-    const stock = document.getElementById(stock).value
+const SEND = (event) => {
+    event.preventDefault()
+    const dataForm = new FormData(form)
+    const title = dataForm.get('title')
+    const description = dataForm.get('description')
+    const price = dataForm.get('price')
+    const thumbnails = dataForm.get('thumbnails')
+    const code = dataForm.get('code')
+    const stock = dataForm.get('stock')
     const product = {
         title: title,
         description: description,
@@ -23,6 +25,15 @@ form.onsubmit = (e) => {
 }
 
 socketClient.on('allProducts', (productsList) => {
+    products.innerHTML = ''
+    let infoProducts = ''
+    productsList.forEach(p => {
+        infoProducts += `<p>${p.title} </p></br>`
+    })
+    products.innerHTML += infoProducts
+})
+
+socketClient.on('productAdded', (productsList) => {
     products.innerHTML = ''
     let infoProducts = ''
     productsList.forEach(p => {

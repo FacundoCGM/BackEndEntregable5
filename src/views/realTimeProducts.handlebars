@@ -1,7 +1,7 @@
 <h1>Agregar productos</h1>
 <div id="contenedor">
     <div id="formContainer">
-        <form id="form">
+        <form id="form" onsubmit="SEND(event)">
             <input type="text" id="title" name="title" placeholder="Title" required /><br /><br />
 
             <input type="text" id="description" name="description" placeholder="Description" required></input type="text"><br /><br />
@@ -14,7 +14,7 @@
 
             <input type="number" id="stock" name="stock" placeholder="Stock" required /><br /><br />
 
-            <input type="submit" value="Enviar" />
+            <input type="submit" value="SEND" />
         </form>
     </div>
 

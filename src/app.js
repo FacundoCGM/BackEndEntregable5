@@ -25,7 +25,7 @@ socketServer.on('connection', async(socket) => {
     socket.on('newProduct', async(product) => {
         await productManager.addProduct(product)
         const productsList = await productManager.getProducts()
-        socketServer.emit('allProducts', productsList)
+        socketServer.emit('productAdded', productsList)
     })
     const productsList = await productManager.getProducts()
     socketServer.emit('allProducts', productsList)
